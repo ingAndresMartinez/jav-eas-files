@@ -1,0 +1,133 @@
+CONSULTAR CLIENTE:
+curl --location --request GET 'localhost:9070/customer/21233445'
+
+CREAR CLIENTE:
+curl --location --request POST 'localhost:9070/customer' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "identificationNumber": "61616161",
+    "identificationType": 1,
+    "firstName": "LSASSAD",
+    "lastName": "ADSFGHETRE",
+    "genderType": 2,
+    "email": "ANDRES@FUTURAMA.COM",
+    "dateBirth": "1990-01-01T00:00:00.000+0000",
+    "contact": [
+        {
+            "type": 1,
+            "number": "87878787"
+        },
+        {
+            "type": 2,
+            "number": "5656565"
+        }
+    ]
+}'
+
+CONSULTAR CUENTA DE AHORROS PARA UN CLIENTE:
+curl --location --request GET 'http://localhost:9070/products/saving-account/2123344577' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "identificationNumber": "21233445",
+    "identificationType": 1,
+    "firstName": "ANDRES",
+    "lastName": "PRUEBA",
+    "genderType": 2,
+    "email": "ANDRES@FUTURAMA.COM",
+    "dateBirth": "1990-01-01T00:00:00.000+0000",
+    "contact": [
+        {
+            "type": 1,
+            "number": "87878787"
+        },
+        {
+            "type": 2,
+            "number": "5656565"
+        }
+    ]
+}'
+
+CONSULTAR CUENTA CDT PARA UN CLIENTE
+curl --location --request GET 'localhost:9070/products/cdt-account/21233445' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "identificationNumber": "21233445",
+    "identificationType": 1,
+    "firstName": "ANDRES",
+    "lastName": "PRUEBA",
+    "genderType": 2,
+    "email": "ANDRES@FUTURAMA.COM",
+    "dateBirth": "1990-01-01T00:00:00.000+0000",
+    "contact": [
+        {
+            "type": 1,
+            "number": "87878787"
+        },
+        {
+            "type": 2,
+            "number": "5656565"
+        }
+    ]
+}'
+
+CREAR SOLICITUD CUENTA DE AHORRO
+curl --location --request POST 'localhost:9070/products/request' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "identificationNumber": "21233445",
+    "identificationType": 1,
+    "productType": 1
+}'
+
+CREAR SOLICITUD CDT
+curl --location --request POST 'localhost:9070/products/request' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "identificationNumber": "21233445",
+    "identificationType": 1,
+    "productType": 2
+}'
+
+CREAR PRODUCTO CUENTA DE AHORRO
+curl --location --request POST 'localhost:9070/products/account' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "identificationNumber": "21233445",
+    "identificationType": 1,
+    "productType": 1,
+    "requestId": 9,
+    "balance": 6900000
+}'
+
+CREAR PRODUCTO CDT
+curl --location --request POST 'localhost:9070/products/account' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "identificationNumber": "21233445",
+    "identificationType": 1,
+    "productType": 2,
+    "requestId": 6,
+    "balance": 3000000,
+    "rate": 3.00,
+    "term": 30
+}'
+
+CONSULTA TASA
+curl --location --request POST 'localhost:9070/rates' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "amount": "200000",
+    "term": 37
+}'
+
+FIRMA DE PAGARE
+curl --location --request POST 'localhost:9070/mocks/deceval' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "identificationNumber": "72727274",
+    "requestId": 15
+}'
+
+CONSULTA BLACK LIST
+curl --location --request GET 'localhost:9070/mocks/black-list/50505050' \
+--header 'Content-Type: application/json'
